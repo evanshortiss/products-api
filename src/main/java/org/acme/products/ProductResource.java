@@ -17,7 +17,7 @@ public class ProductResource {
 
     @Inject
     ProductService productService;
-    
+
     @GET
     @Path("/product/{id}")
     public Response getProduct(@PathParam("id") String id) {

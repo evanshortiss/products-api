@@ -12,6 +12,8 @@ import javax.ws.rs.ext.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.vertx.core.http.HttpServerRequest;
+
 @Provider
 public class LoggingFilter implements ContainerRequestFilter {
 
@@ -20,9 +22,11 @@ public class LoggingFilter implements ContainerRequestFilter {
     @Context
     UriInfo info;
 
+    @Context
+    HttpServerRequest request;
+
     @Override
     public void filter(ContainerRequestContext context) throws IOException {
-
         if (log.isDebugEnabled()) {
             final String method = context.getMethod();
             final String path = info.getPath();
