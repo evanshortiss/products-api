@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "3scale OIDC Demo (Products API)",
+    "version": "1.0.0",
+    "description": "Simple product listing API."
+  },
+  "paths": {
+    "/api/product/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "openid-keycloak-sso": []
+          }
+        ],
+        "operationId": "list_products"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://replace-me.com/auth/realms/replace-me-with-realm/protocol/openid-connect/auth",
+            "tokenUrl": "https://replace-me.com/auth/realms/replace-me-with-realm/protocol/openid-connect/token",
+            "refreshUrl": "https://replace-me.com/auth/realms/replace-me-with-realm/protocol/openid-connect/token"
+          }
+        },
+        "type": "oauth2",
+        "description": "Support for OAuth 2.0 Authorization Code Flow"
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Products API (API Key)",
+    "version": "1.0.0",
+    "description": "Simple product listing API."
+  },
+  "paths": {
+    "/api/product/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key-security": {
+        "type": "apiKey",
+        "description": "Uses API Key security . The key is included as a \"user_key\" header.",
+        "name": "user_key",
+        "in": "header"
+      }
+    }
+  }
+}
